@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState } from 'react';
 import styled from 'styled-components';
 
@@ -49,17 +50,20 @@ export default function SearchBar(props) {
    const handleInputChange = (event) => {
       const {value} = event.target;
       setCharacters (value);
+      
 
    }
-
    
-   
-   return (
+   const handleClick = () => {
+      props.onSearch(characters);
+      setCharacters("");
+    }
+    
+    return (
       <SearchGroup>
-         <Input type='search' onChange={handleInputChange}/>
-         <Button onClick={() => props.onSearch(characters)}
-         >Agregar</Button>
+        <Input type='search' value={characters} onChange={handleInputChange}/>
+        <Button onClick={handleClick}>Agregar</Button>
       </SearchGroup>
-   );
+    );
    
 }

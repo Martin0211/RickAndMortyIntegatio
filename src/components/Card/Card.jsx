@@ -1,7 +1,8 @@
+import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-
-const DivCard = styled.div `
+const DivCard = styled.div`
     position: relative;
     width: 15vw;
     height: 24vw;
@@ -20,7 +21,7 @@ const DivCard = styled.div `
 `
 
 
-const DivDatos = styled.div `
+const DivDatos = styled.div`
 
    display: flex;
    justify-content: center;
@@ -32,36 +33,39 @@ const DivDatos = styled.div `
    
 `
 
-const H2Datos = styled.h2 `
+const H2Datos = styled.h2`
    padding: 0vw 1.5vw; 
    font-size: 1.3vw;
    margin-top: 0.5vw;
+   transition: all .3s;
 `
 
-const H2DatosD = styled.h2 `
+const H2DatosD = styled.h2`
    display: flex;
    padding: 0vw;
    margin: 0vw;
    margin-left: 0.5vw;
    font-size: 0.7vw;
-   
+   transition: all .3s;   
 `
 
-const H2Name = styled.h2 `
+const H2Name = styled.h2`
    margin: 1vw;
    margin-top: 0.3vw;
-   font-size: 1.5vw;  
+   font-size: 1.5vw;
+   transition: all .3s;  
 `
-const H2NameN = styled.h2 `
+const H2NameN = styled.h2`
    display: flex;
    padding: 0vw;
    margin: 0vw;
    margin-left: 0.5vw;
    margin-bottom: 0.3vw;
    font-size: 0.7vw;
+   transition: all .3s;
 `
 
-const ButtonClose = styled.button `
+const ButtonClose = styled.button`
    padding: 1vw 1vw;
    position: absolute;
    left: 12.4vw;
@@ -81,32 +85,41 @@ const ButtonClose = styled.button `
    }
 `
 
-const ImgCard = styled.img `
+const ImgCard = styled.img`
    width: 15vw;
    border-radius: 2vw 2vw 0px 0px;
    transition: all .3s;
 `
+const LinkGlobal = styled(Link)`
+   text-decoration: none;
+   color: black;
+   `
+
 
 
 export default function Card(props) {
    return (
+
       <DivCard>
          <ButtonClose onClick={props.onClose}>X</ButtonClose>
-         <ImgCard  src={props.image} alt="imagen no encontrada" />
+         <LinkGlobal to={`/detail/${props.id}`}>
+            <ImgCard src={props?.image} alt="imagen no encontrada" />
             <div>
                <H2NameN>Name</H2NameN>
                <H2Name>{props.name}</H2Name>
             </div>
-         <DivDatos>
-            <div>
-               <H2DatosD>Gender</H2DatosD>
-               <H2Datos>{props.gender}</H2Datos>
-            </div>
-            <div>
-               <H2DatosD>Species</H2DatosD>
-               <H2Datos>{props.species}</H2Datos>
-            </div>
-         </DivDatos>
+            <DivDatos>
+               <div>
+                  <H2DatosD>Gender</H2DatosD>
+                  <H2Datos>{props.gender}</H2Datos>
+               </div>
+               <div>
+                  <H2DatosD>Species</H2DatosD>
+                  <H2Datos>{props.species}</H2Datos>
+               </div>
+            </DivDatos>
+         </LinkGlobal>
       </DivCard>
+
    );
 }
