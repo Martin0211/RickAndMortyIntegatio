@@ -27,6 +27,14 @@ export const StyledLink = styled(NavLink)`
   }
 `;
 
+export const StyledLogOut = styled(NavLink)`
+  color: red;
+  font-size: 2vw;
+  padding: 2vw;
+  
+  text-decoration: none;
+  `
+
 
 
 
@@ -42,6 +50,9 @@ export default function Nav(props) {
                     <StyledLink exact activeClassName="active" to="/abaut">
                         Abaut
                     </StyledLink>
+                    <StyledLogOut exact activeClassName="active" to="/">
+                        LogOut
+                    </StyledLogOut>
                 </div>
             </ul>
             <SearchBar

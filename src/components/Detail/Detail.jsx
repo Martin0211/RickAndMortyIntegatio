@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 
 const DivContainer = styled.div`
@@ -31,9 +31,13 @@ export default function Detail(props) {
     return ()=> setCharacter({});
   }, [detailId]);
 
+  const navigate = useNavigate();
+
+
   return (
     <DivContainer>
       <div>
+        
         <h1>{character.name}</h1>
         <h1>Status: {character.status}</h1>
         <h1>Gender: {character.gender}</h1>
@@ -43,6 +47,7 @@ export default function Detail(props) {
         <h1>Location: {character.location?.name}</h1>
       </div>
       <img src={character.image} alt="" />
+      <button onClick={() => navigate(-1)}>Regresar</button>
     </DivContainer>
 
   )
